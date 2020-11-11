@@ -1,0 +1,40 @@
+<section class="container-fluid bg">
+  <section class="row justify-content-center">
+    <section class="col-12 col-sm-6 col-md-3">
+      <form class="form-container">
+      <h1><%= t('.sign_in') %></h1>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group ">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <br>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+        </div>
+        <br>
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group form-check">
+            <%= f.check_box :remember_me, class: 'form-check-input' %>
+            <%= f.label :remember_me, class: 'form-check-label' do %>
+              <%= resource.class.human_attribute_name('remember_me') %>
+            <% end %>
+          </div>
+        <% end %>
+        <br>
+        <div class="form-group">
+          <%= f.submit t('.sign_in'), class: 'btn btn-primary btn-block' %>
+        </div>
+      <% end %>
+      <br>
+
+      <%= render 'devise/shared/links' %>
+      </form>
+    </section>
+  </section>
+</section>
